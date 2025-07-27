@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/lines_counter/__init__.py
+src/lines_counter/cli.py
+src/lines_counter/core.py
+src/lines_counter/file_analyzer.py
+src/lines_counter/utils.py
+src/lines_counter.egg-info/PKG-INFO
+src/lines_counter.egg-info/SOURCES.txt
+src/lines_counter.egg-info/dependency_links.txt
+src/lines_counter.egg-info/entry_points.txt
+src/lines_counter.egg-info/requires.txt
+src/lines_counter.egg-info/top_level.txt
+tests/test_core.py
+tests/test_file_analyzer.py

@@ -1,0 +1,2 @@
+[console_scripts]
+lines-counter = lines_counter.cli:main

@@ -1,0 +1,220 @@
+Metadata-Version: 2.4
+Name: lines-counter
+Version: 0.1.0
+Summary: A Python package to count lines of code, comments, and blank lines in codebases
+Author-email: Team Legend <team@legend.com>
+License: MIT
+Project-URL: Homepage, https://github.com/team-legend/lines-counter
+Project-URL: Repository, https://github.com/team-legend/lines-counter
+Project-URL: Issues, https://github.com/team-legend/lines-counter/issues
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: click>=8.0.0
+Requires-Dist: pathlib2>=2.3.0; python_version < "3.4"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.0.0; extra == "dev"
+Requires-Dist: black>=22.0.0; extra == "dev"
+Requires-Dist: flake8>=5.0.0; extra == "dev"
+
+# Lines Counter
+
+A powerful Python package to count lines of code, comments, and blank lines in your codebase. Perfect for code analysis and project metrics.
+
+## Features
+
+- 🔍 **Multi-file Analysis**: Count lines across entire directories
+- 📊 **Detailed Breakdown**: Separate counts for code, comments, and blank lines
+- 🎯 **File Type Support**: Works with 30+ programming languages
+- ⚙️ **Configurable**: Exclude directories and file types
+- 📤 **JSON Output**: Structured data for further processing
+- 🚀 **CLI Tool**: Easy command-line interface
+- 📈 **Language Breakdown**: Statistics grouped by programming language
+
+## Installation
+
+```bash
+pip install lines-counter
+```
+
+## Quick Start
+
+### Basic Usage
+
+Count lines in a directory:
+```bash
+lines-counter ./src
+```
+
+### Advanced Usage
+
+Count with exclusions and specific file types:
+```bash
+lines-counter . --exclude node_modules .git --extensions .py .js .ts --output results.json
+```
+
+### Pretty Print Output
+
+Display formatted JSON in console:
+```bash
+lines-counter ./src --pretty
+```
+
+## Output Format
+
+The tool outputs detailed JSON with per-file, language breakdown, and summary statistics:
+
+```json
+{
+  "summary": {
+    "total_files": 15,
+    "total_lines": 1250,
+    "code_lines": 890,
+    "comment_lines": 280,
+    "blank_lines": 80
+  },
+  "languages": {
+    "Python": {
+      "files": 8,
+      "total_lines": 650,
+      "code_lines": 480,
+      "comment_lines": 140,
+      "blank_lines": 30
+    },
+    "JavaScript": {
+      "files": 7,
+      "total_lines": 600,
+      "code_lines": 410,
+      "comment_lines": 140,
+      "blank_lines": 50
+    }
+  },
+  "files": [
+    {
+      "path": "src/main.py",
+      "language": "Python",
+      "lines": {
+        "total": 100,
+        "code": 75,
+        "comments": 20,
+        "blank": 5
+      }
+    }
+  ]
+}
+```
+
+## CLI Options
+
+| Option | Short | Description |
+|--------|-------|-------------|
+| `--path` | - | Directory to analyze (required) |
+| `--output` | `-o` | Output JSON file path |
+| `--extensions` | `-e` | File extensions to include (e.g., -e .py -e .js) |
+| `--exclude` | `-x` | Patterns to exclude (default: .git, __pycache__, node_modules, .pytest_cache) |
+| `--no-recursive` | `-n` | Do not analyze subdirectories |
+| `--verbose` | `-v` | Enable verbose output |
+| `--pretty` | `-p` | Pretty print JSON output to console |
+
+## Supported File Types
+
+The package supports 30+ programming languages and file types:
+
+- **Python** (.py)
+- **JavaScript** (.js)
+- **TypeScript** (.ts)
+- **Java** (.java)
+- **C/C++** (.c, .cpp)
+- **C#** (.cs)
+- **PHP** (.php)
+- **Ruby** (.rb)
+- **Go** (.go)
+- **Rust** (.rs)
+- **Swift** (.swift)
+- **Kotlin** (.kt)
+- **Scala** (.scala)
+- **HTML** (.html)
+- **XML** (.xml)
+- **CSS** (.css)
+- **SCSS/Sass** (.scss, .sass)
+- **Less** (.less)
+- **SQL** (.sql)
+- **Shell Scripts** (.sh, .bash, .zsh, .fish)
+- **YAML** (.yaml, .yml)
+- **TOML** (.toml)
+- **INI/Config** (.ini, .cfg, .conf)
+- **JSON** (.json)
+- **Markdown** (.md)
+- **Text** (.txt)
+
+## Python API
+
+You can also use the package programmatically:
+
+```python
+from lines_counter import analyze_directory, count_lines
+from pathlib import Path
+
+# Analyze a directory
+results = analyze_directory(Path("./src"))
+
+# Count lines in a single file
+file_stats = count_lines(Path("main.py"))
+
+# Print summary
+print(f"Total files: {results['summary']['total_files']}")
+print(f"Total lines: {results['summary']['total_lines']}")
+```
+
+## Development
+
+### Setup
+
+```bash
+git clone https://github.com/team-legend/lines-counter.git
+cd lines-counter
+pip install -e ".[dev]"
+```
+
+### Testing
+
+```bash
+pytest
+```
+
+### Building
+
+```bash
+python -m build
+```
+
+### Installing in Development Mode
+
+```bash
+pip install -e .
+```
+
+## License
+
+MIT License - see LICENSE file for details.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
+
+---
+
+Made with ❤️ by **Team Legend**

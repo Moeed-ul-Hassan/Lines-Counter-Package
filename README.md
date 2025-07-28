@@ -20,7 +20,7 @@
 ### Installation
 
 ```bash
-pip install lines-counter --index-url https://github.com/moeed-dev/pulse-hms/packages/pypi/simple/
+pip install lines-counter --index-url https://github.com/Moeed-ul-Hassan/pulse-hms/packages/pypi/simple/
 ```
 
 ### Basic Usage
